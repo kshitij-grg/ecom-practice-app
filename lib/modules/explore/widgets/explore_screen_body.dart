@@ -109,7 +109,12 @@ class _ExploreScreenBodyState extends State<ExploreScreenBody> {
     return GridView.builder(
       itemCount: categoryPlants.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, crossAxisSpacing: 10, mainAxisSpacing: 10),
+        crossAxisCount: 2,
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+        mainAxisExtent:
+            250, //place the same value as we did in the plant tile widget
+      ),
       itemBuilder: (context, index) =>
           PlantTile(product: categoryPlants[index]),
     );
@@ -143,9 +148,6 @@ class _ExploreScreenBodyState extends State<ExploreScreenBody> {
                 ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 20,
           ),
           // this one is for all the plants
           Expanded(child: getPlants()),

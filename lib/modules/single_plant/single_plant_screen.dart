@@ -1,4 +1,6 @@
 import 'package:first_class/constants.dart';
+import 'package:first_class/modules/single_plant/widgets/plant_detail_tile.dart';
+import 'package:first_class/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class SinglePlantTile extends StatelessWidget {
@@ -7,50 +9,180 @@ class SinglePlantTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var _width = MediaQuery.of(context).size.width;
+    var _height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
-            Stack(
-              children: [
-                Container(
-                  width: _width,
-                  color: const Color(0xffC1DFCB).withOpacity(.5),
-                  child: Image.asset(
-                    "assets/images/plant-1.png",
-                    fit: BoxFit.contain,
-                    width: 400,
-                    height: 400,
+            Expanded(
+              child: Stack(
+                children: [
+                  // upper part of the screen
+                  Container(
+                    width: _width,
+                    height: _height / 2,
+                    color: const Color(0xffC1DFCB).withOpacity(.5),
+                    child: Image.asset(
+                      "assets/images/plant-1.png",
+                      fit: BoxFit.contain,
+                      width: 400,
+                      height: 400,
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(15),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                          padding: const EdgeInsets.all(7),
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).scaffoldBackgroundColor,
-                            borderRadius: BorderRadius.circular(60),
-                          ),
-                          child: const Icon(
-                            Icons.chevron_left,
-                            color: primaryColor,
-                          )),
-                      Container(
-                          padding: const EdgeInsets.all(7),
-                          decoration: BoxDecoration(
+                  Padding(
+                    padding: const EdgeInsets.all(30),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                            padding: const EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).scaffoldBackgroundColor,
                               borderRadius: BorderRadius.circular(60),
-                              color: primaryColor),
-                          child: const Icon(
-                            Icons.favorite_outline,
-                            color: Colors.white,
-                          )),
-                    ],
+                            ),
+                            child: const Icon(Icons.chevron_left,
+                                color: primaryColor, size: 20)),
+                        Container(
+                            padding: const EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(60),
+                                color: primaryColor),
+                            child: const Icon(Icons.favorite_outline,
+                                color: Colors.white, size: 20)),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+
+                  // lower part of the screen
+                  Positioned(
+                    bottom: 20,
+                    child: Container(
+                      width: _width,
+                      height: _height / 2,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 40),
+                      decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(50),
+                              topRight: Radius.circular(50))),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: const [
+                                  Text(
+                                    "Schefflera",
+                                    style: TextStyle(
+                                        color: primaryColor,
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    "Rs. 250",
+                                    style: TextStyle(
+                                        color: secondaryColor,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 5),
+                                decoration: BoxDecoration(
+                                    color: primaryColor,
+                                    borderRadius: BorderRadius.circular(20)),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: const [
+                                    Icon(
+                                      Icons.remove,
+                                      color: Colors.white,
+                                      size: 14,
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      "3",
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Icon(
+                                      Icons.add,
+                                      color: Colors.white,
+                                      size: 14,
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          const Text(
+                            "About",
+                            style: TextStyle(
+                                color: primaryColor,
+                                fontWeight: FontWeight.w600),
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          const Text(
+                            "However, they look like huge white flowers and they bllom throughout the yar and a bit more frequently in the springtime. This coupled with the plant's broad, deep green leaves.",
+                            maxLines: 4,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          SizedBox(
+                              height: 80,
+                              child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: 3,
+                                  itemBuilder: ((context, index) =>
+                                      const PlantDetailTile()))),
+                          const Spacer(),
+                          Row(
+                            children: [
+                              Container(
+                                  padding: const EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.shade200,
+                                    borderRadius: BorderRadius.circular(60),
+                                  ),
+                                  child: const Icon(
+                                    Icons.shopping_cart_outlined,
+                                    color: primaryColor,
+                                    size: 20,
+                                  )),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              CustomButton(
+                                label: "BUY NOW",
+                                onPress: () {},
+                                textColor: Colors.white,
+                                buttonColor: primaryColor,
+                                borderColor: primaryColor,
+                                iconVisibility: true,
+                                width: MediaQuery.of(context).size.width * .7,
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           ],
         ),

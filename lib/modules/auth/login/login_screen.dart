@@ -3,8 +3,6 @@
 import '../register/register_screen.dart';
 import 'package:first_class/modules/home_screen.dart';
 import 'package:first_class/widgets/custom_button.dart';
-import 'package:first_class/widgets/input_text_field.dart';
-import 'package:first_class/widgets/password_text_field.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -41,20 +39,20 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(
                 height: 40,
               ),
-              InputTextField(
-                label: "Email Address",
-                textInputAction: TextInputAction.next,
-                textInputType: TextInputType.emailAddress,
-              ),
+              // InputTextField(
+              //   label: "Email Address",
+              //   textInputAction: TextInputAction.next,
+              //   textInputType: TextInputType.emailAddress,
+              // ),
               const SizedBox(
                 height: 15,
               ),
-              PasswordTextField(
-                label: "Password",
-                showIcon: true,
-                textInputAction: TextInputAction.done,
-                textInputType: TextInputType.visiblePassword,
-              ),
+              // PasswordTextField(
+              //   label: "Password",
+              //   showIcon: true,
+              //   textInputAction: TextInputAction.done,
+              //   textInputType: TextInputType.visiblePassword,
+              // ),
               SizedBox(
                 height: 20,
               ),

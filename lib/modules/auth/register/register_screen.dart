@@ -1,10 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:first_class/modules/home_screen.dart';
+import 'package:first_class/modules/auth/register/register_controller.dart';
 import 'package:first_class/widgets/custom_button.dart';
 import 'package:first_class/widgets/input_text_field.dart';
 import 'package:first_class/widgets/password_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../login/login_screen.dart';
 
@@ -13,6 +14,7 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(RegisterController());
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
@@ -46,6 +48,7 @@ class RegisterScreen extends StatelessWidget {
                 label: "Email Address",
                 textInputAction: TextInputAction.next,
                 textInputType: TextInputType.emailAddress,
+                controller: controller.emailController,
               ),
               const SizedBox(
                 height: 15,
@@ -55,6 +58,7 @@ class RegisterScreen extends StatelessWidget {
                 showIcon: false,
                 textInputAction: TextInputAction.next,
                 textInputType: TextInputType.visiblePassword,
+                controller: controller.passwordController,
               ),
               SizedBox(
                 height: 20,
@@ -64,6 +68,7 @@ class RegisterScreen extends StatelessWidget {
                 label: "Confirm Password",
                 textInputAction: TextInputAction.done,
                 textInputType: TextInputType.visiblePassword,
+                controller: controller.confirmPasswordController,
               ),
               SizedBox(
                 height: 40,
@@ -72,10 +77,7 @@ class RegisterScreen extends StatelessWidget {
                   label: "Sign up",
                   textColor: Colors.black,
                   buttonColor: Colors.white,
-                  onPress: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()));
-                  }),
+                  onPress: controller.register),
               Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

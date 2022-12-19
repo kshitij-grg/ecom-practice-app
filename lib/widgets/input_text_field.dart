@@ -4,15 +4,18 @@ class InputTextField extends StatelessWidget {
   String label;
   TextInputAction textInputAction;
   TextInputType textInputType;
+  TextEditingController controller;
 
   InputTextField(
       {required this.label,
+      required this.controller,
       required this.textInputAction,
       required this.textInputType});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),

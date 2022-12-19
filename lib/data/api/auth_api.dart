@@ -7,8 +7,10 @@ import 'package:http/http.dart' as http;
 class AuthApi {
   static Future<LoginResponse> register(
       {required String email, required String password}) async {
+    ///hamle esma chai link deko ho
     const url = baseUrl + "register";
 
+// yo chai request body banako ho
     Map<String, String> requestBody = <String, String>{
       "email": email,
       "password": password

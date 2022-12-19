@@ -7,9 +7,11 @@ class PasswordTextField extends StatefulWidget {
   TextInputAction textInputAction;
   TextInputType textInputType;
   bool showIcon;
+  TextEditingController controller;
 
   PasswordTextField(
       {required this.label,
+      required this.controller,
       required this.textInputAction,
       required this.showIcon,
       required this.textInputType});
@@ -24,6 +26,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: widget.controller,
       obscureText: isPassword,
       decoration: InputDecoration(
           suffixIcon: InkWell(

@@ -1,16 +1,17 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:first_class/modules/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class PasswordTextField extends StatefulWidget {
   String label;
   TextInputAction textInputAction;
   TextInputType textInputType;
+  bool showIcon;
 
   PasswordTextField(
       {required this.label,
       required this.textInputAction,
+      required this.showIcon,
       required this.textInputType});
 
   @override
@@ -31,9 +32,12 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
                   isPassword = !isPassword;
                 });
               },
-              child: Icon(
-                isPassword ? Icons.visibility : Icons.visibility_off,
-                color: Colors.white,
+              child: Visibility(
+                visible: widget.showIcon,
+                child: Icon(
+                  isPassword ? Icons.visibility : Icons.visibility_off,
+                  color: Colors.white,
+                ),
               )),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),

@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:first_class/modules/login_screen.dart';
 import 'package:first_class/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
+
+import 'auth/login/login_screen.dart';
+import 'auth/register/register_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -50,7 +52,14 @@ class WelcomeScreen extends StatelessWidget {
                 height: 15,
               ),
               CustomButton(
-                  label: "Sign up", textColor: Colors.white, onPress: () {}),
+                  label: "Sign up",
+                  textColor: Colors.white,
+                  onPress: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RegisterScreen()));
+                  }),
               Spacer(),
               Text(
                 "Continue as a guest",

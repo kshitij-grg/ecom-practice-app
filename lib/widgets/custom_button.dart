@@ -30,6 +30,7 @@ class CustomButton extends StatelessWidget {
           side: BorderSide(color: borderColor ?? Colors.white),
           borderRadius: BorderRadius.circular(10)),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Visibility(
             visible: iconVisibility ?? false,

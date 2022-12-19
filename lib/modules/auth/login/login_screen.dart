@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import '../register/register_screen.dart';
 import 'package:first_class/modules/home_screen.dart';
 import 'package:first_class/widgets/custom_button.dart';
 import 'package:first_class/widgets/input_text_field.dart';
@@ -50,7 +51,8 @@ class LoginScreen extends StatelessWidget {
               ),
               PasswordTextField(
                 label: "Password",
-                textInputAction: TextInputAction.next,
+                showIcon: true,
+                textInputAction: TextInputAction.done,
                 textInputType: TextInputType.visiblePassword,
               ),
               SizedBox(
@@ -77,17 +79,25 @@ class LoginScreen extends StatelessWidget {
               Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Text(
                     "Don't have an account?",
                     style: TextStyle(color: Colors.white),
                   ),
-                  Text(
-                    "Sign Up Now",
-                    style: TextStyle(
-                        decoration: TextDecoration.underline,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RegisterScreen()));
+                    },
+                    child: Text(
+                      " Sign Up Now",
+                      style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
                   ),
                 ],
               ),

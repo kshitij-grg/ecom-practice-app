@@ -1,7 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:first_class/modules/auth/login/login_controller.dart';
+import 'package:first_class/widgets/input_text_field.dart';
+import 'package:get/get.dart';
+
+import '../../../widgets/password_text_field.dart';
 import '../register/register_screen.dart';
-import 'package:first_class/modules/home_screen.dart';
 import 'package:first_class/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +14,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
@@ -39,20 +44,22 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(
                 height: 40,
               ),
-              // InputTextField(
-              //   label: "Email Address",
-              //   textInputAction: TextInputAction.next,
-              //   textInputType: TextInputType.emailAddress,
-              // ),
+              InputTextField(
+                label: "Email Address",
+                textInputAction: TextInputAction.next,
+                textInputType: TextInputType.emailAddress,
+                controller: controller.emailController,
+              ),
               const SizedBox(
                 height: 15,
               ),
-              // PasswordTextField(
-              //   label: "Password",
-              //   showIcon: true,
-              //   textInputAction: TextInputAction.done,
-              //   textInputType: TextInputType.visiblePassword,
-              // ),
+              PasswordTextField(
+                label: "Password",
+                showIcon: true,
+                textInputAction: TextInputAction.done,
+                textInputType: TextInputType.visiblePassword,
+                controller: controller.passwordController,
+              ),
               SizedBox(
                 height: 20,
               ),
@@ -70,10 +77,7 @@ class LoginScreen extends StatelessWidget {
                   label: "Login",
                   textColor: Colors.black,
                   buttonColor: Colors.white,
-                  onPress: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()));
-                  }),
+                  onPress: controller.login),
               Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

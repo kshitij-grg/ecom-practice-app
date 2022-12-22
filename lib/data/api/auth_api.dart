@@ -31,4 +31,31 @@ class AuthApi {
       throw Exception("Something went wrong");
     }
   }
+
+  static Future<LoginResponse> login(
+      {required String email, required String password}) async {
+    ///hamle esma chai link deko ho
+    const url = baseUrl + "login";
+
+// yo chai request body banako ho
+    Map<String, String> requestBody = <String, String>{
+      "email": email,
+      "password": password
+    };
+
+    final response =
+        await http.post(Uri.parse(url), body: requestBody, headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    });
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      LoginResponse loginResponse = LoginResponse.fromJson(data);
+      return loginResponse;
+    } else if (response.statusCode == 401) {
+      throw Exception('Some of the fields are missing');
+    } else {
+      throw Exception("Something went wrong");
+    }
+  }
 }

@@ -1,3 +1,4 @@
+import 'package:first_class/app_controller.dart';
 import 'package:first_class/data/api/auth_api.dart';
 import 'package:first_class/modules/home_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,6 +7,7 @@ import 'package:get/get.dart';
 class LoginController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final controller = Get.find<AppController>();
 
   Future login() async {
     String email = emailController.text.trim();
@@ -22,6 +24,7 @@ class LoginController extends GetxController {
 
       if (response.error != null && response.error == false) {
         Get.rawSnackbar(message: "You have successfully Logged In");
+        controller.isLoggedIn(true);
         Get.offAll(() => const HomeScreen());
       } else {
         Get.rawSnackbar(message: response.message);
@@ -35,5 +38,12 @@ class LoginController extends GetxController {
       }
       Get.rawSnackbar(message: errorMessage);
     }
+  }
+
+  @override
+  void onClose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.onClose();
   }
 }

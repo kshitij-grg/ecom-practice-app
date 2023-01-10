@@ -1,10 +1,16 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:first_class/constants.dart';
+import 'package:first_class/data/models/plant/plant.dart';
 import 'package:first_class/modules/single_plant/widgets/plant_detail_tile.dart';
 import 'package:first_class/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
+import '../../widgets/loading_view.dart';
+
 class SinglePlantTile extends StatelessWidget {
-  const SinglePlantTile({Key? key}) : super(key: key);
+  Plants plant;
+
+  SinglePlantTile({required this.plant});
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +28,14 @@ class SinglePlantTile extends StatelessWidget {
                     width: _width,
                     height: _height / 2,
                     color: const Color(0xffC1DFCB).withOpacity(.5),
-                    child: Image.asset(
-                      "assets/images/plant-1.png",
-                      fit: BoxFit.contain,
-                      width: 400,
+                    child: CachedNetworkImage(
+                      imageUrl: plant.image,
                       height: 400,
+                      width: 400,
+                      fit: BoxFit.contain,
+                      placeholder: ((context, url) => LoadingView()),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error_outline),
                     ),
                   ),
                   Padding(

@@ -2,7 +2,10 @@ import 'dart:convert';
 
 import 'package:first_class/constants.dart';
 import 'package:first_class/data/models/auth/login_response.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+
+import '../../app_controller.dart';
 
 class AuthApi {
   static Future<LoginResponse> register(
@@ -51,6 +54,10 @@ class AuthApi {
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       LoginResponse loginResponse = LoginResponse.fromJson(data);
+      //we should set the api key here
+      await Get.find<AppController>()
+          .sharedPreferences
+          .setString("apiKey", loginResponse.apiKey ?? '');
       return loginResponse;
     } else if (response.statusCode == 401) {
       throw Exception('Some of the fields are missing');

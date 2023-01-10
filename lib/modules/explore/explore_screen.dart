@@ -1,11 +1,17 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:first_class/constants.dart';
+import 'package:first_class/modules/explore/category_controller.dart';
+import 'package:first_class/modules/explore/plant_controller.dart';
 import 'package:first_class/modules/explore/widgets/explore_screen_body.dart';
+import 'package:first_class/widgets/loading_view.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ExploreScreen extends StatelessWidget {
-  const ExploreScreen({Key? key}) : super(key: key);
+  ExploreScreen({Key? key}) : super(key: key);
+  final categoryController = Get.put(CategoryController());
+  final plantController = Get.put(PlantController());
 
   @override
   Widget build(BuildContext context) {
@@ -76,28 +82,16 @@ class ExploreScreen extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              ExploreScreenBody(),
+              Obx(() => categoryController.isLoading.isTrue &&
+                      plantController.isLoading.isTrue
+                  ? LoadingView()
+                  : ExploreScreenBody(
+                      categoryNames: categoryController.categoryList,
+                      plants: plantController.plantList,
+                    )),
               SizedBox(
                 height: 20,
               ),
-              // Text(
-              //   "Recent Viewed",
-              //   style:
-              //       TextStyle(color: primaryColor, fontWeight: FontWeight.w600),
-              // ),
-              // SizedBox(
-              //   height: 20,
-              // ),
-              // SizedBox(
-              //   height: 70,
-              //   child: ListView.builder(
-              //       itemCount: 5,
-              //       scrollDirection: Axis.horizontal,
-              //       itemBuilder: (context, index) => Padding(
-              //             padding: const EdgeInsets.only(right: 20),
-              //             child: RecentPlantTile(),
-              //           )),
-              // ),
             ],
           ),
         ));

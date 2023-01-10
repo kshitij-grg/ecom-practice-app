@@ -1,31 +1,25 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
 
 import 'package:first_class/constants.dart';
-import 'package:first_class/data/models/category/category.dart';
+import 'package:first_class/data/models/category/category_reponse.dart';
 import 'package:flutter/material.dart';
 
-class CategoryTile extends StatefulWidget {
-  bool isSelected;
-  // String label;
-  Category category;
+class CategoryTile extends StatelessWidget {
   CategoryTile({required this.isSelected, required this.category});
+  bool isSelected;
+  Categories category;
 
-  @override
-  State<CategoryTile> createState() => _CategoryTileState();
-}
-
-class _CategoryTileState extends State<CategoryTile> {
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
-          color: widget.isSelected ? Colors.grey.shade200 : Colors.transparent,
+          color: isSelected ? Colors.grey.shade200 : Colors.transparent,
           borderRadius: BorderRadius.circular(10)),
       child: Text(
-        widget.category.categoryName,
+        category.name,
         style: TextStyle(
-            color: widget.isSelected ? primaryColor : Colors.grey,
+            color: isSelected ? primaryColor : Colors.grey,
             fontWeight: FontWeight.w600),
       ),
     );

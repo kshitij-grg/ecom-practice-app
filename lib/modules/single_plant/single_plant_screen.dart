@@ -68,8 +68,8 @@ class SinglePlantTile extends StatelessWidget {
                     child: Container(
                       width: _width,
                       height: _height / 2,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 40),
+                      padding:
+                          const EdgeInsets.only(left: 30, right: 30, top: 30),
                       decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.only(
@@ -83,17 +83,17 @@ class SinglePlantTile extends StatelessWidget {
                             children: [
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
+                                children: [
                                   Text(
-                                    "Schefflera",
-                                    style: TextStyle(
+                                    plant.name,
+                                    style: const TextStyle(
                                         color: primaryColor,
                                         fontSize: 22,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
-                                    "Rs. 250",
-                                    style: TextStyle(
+                                    "Rs. ${plant.price}",
+                                    style: const TextStyle(
                                         color: secondaryColor,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -146,18 +146,33 @@ class SinglePlantTile extends StatelessWidget {
                           const SizedBox(
                             height: 5,
                           ),
-                          const Text(
-                            "However, they look like huge white flowers and they bllom throughout the yar and a bit more frequently in the springtime. This coupled with the plant's broad, deep green leaves.",
+                          Text(
+                            plant.description,
                             maxLines: 4,
                             overflow: TextOverflow.ellipsis,
                           ),
-                          SizedBox(
-                              height: 80,
-                              child: ListView.builder(
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: 3,
-                                  itemBuilder: ((context, index) =>
-                                      const PlantDetailTile()))),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              PlantDetailTile(
+                                icon: Icons.arrow_upward,
+                                label: "Height",
+                                value: plant.height,
+                              ),
+                              PlantDetailTile(
+                                icon: Icons.arrow_downward,
+                                label: "Humidity",
+                                value: plant.humidity,
+                              ),
+                              PlantDetailTile(
+                                icon: Icons.arrow_forward_sharp,
+                                label: "Thickness",
+                                value: plant.thickness,
+                              ),
+                            ],
+                          ),
                           const Spacer(),
                           Row(
                             children: [

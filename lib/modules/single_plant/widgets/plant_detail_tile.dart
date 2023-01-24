@@ -2,7 +2,11 @@ import 'package:first_class/constants.dart';
 import 'package:flutter/material.dart';
 
 class PlantDetailTile extends StatelessWidget {
-  const PlantDetailTile({Key? key}) : super(key: key);
+  String label, value;
+  IconData icon;
+
+  PlantDetailTile(
+      {required this.label, required this.value, required this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -12,28 +16,28 @@ class PlantDetailTile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(5),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(60), color: primaryColor),
-            child: const Icon(
-              Icons.arrow_upward,
+            child: Icon(
+              icon,
               color: Colors.white,
+              size: 16,
             ),
           ),
           const SizedBox(
-            width: 10,
+            width: 5,
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Text(
-                "Height",
-                style: TextStyle(color: Colors.black54),
+                label,
+                style: const TextStyle(color: Colors.black54),
               ),
               Text(
-                "8.2'",
-                style: TextStyle(color: primaryColor),
+                "$value'",
+                style: const TextStyle(color: primaryColor),
               ),
             ],
           )

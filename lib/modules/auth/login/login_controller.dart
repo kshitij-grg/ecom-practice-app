@@ -12,6 +12,7 @@ class LoginController extends GetxController {
   Future login() async {
     String email = emailController.text.trim();
     String password = passwordController.text.trim();
+    // print("pressed");
 
     // validation part
     if (email.isEmpty || password.isEmpty) {

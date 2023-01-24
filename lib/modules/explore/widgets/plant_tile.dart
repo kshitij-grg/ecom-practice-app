@@ -21,6 +21,7 @@ class PlantTile extends StatelessWidget {
                 builder: (context) => SinglePlantTile(
                       plant: plant,
                     )));
+        // Get.to(()=>SinglePlantTile(plant: plant));
       },
       child: SizedBox(
         height: 250, //decreased the value to some extent here

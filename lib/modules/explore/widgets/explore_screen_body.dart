@@ -103,7 +103,9 @@ class _ExploreScreenBodyState extends State<ExploreScreenBody> {
         mainAxisExtent:
             250, //place the same value as we did in the plant tile widget
       ),
-      itemBuilder: (context, index) => PlantTile(plant: categoryPlants[index]),
+      itemBuilder: (context, index) => PlantTile(
+        plant: categoryPlants[index],
+      ),
     );
   }
 

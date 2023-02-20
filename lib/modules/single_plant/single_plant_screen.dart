@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:first_class/constants.dart';
 import 'package:first_class/data/models/plant/plant.dart';
+import 'package:first_class/modules/single_plant/single_plant_controller.dart';
 import 'package:first_class/modules/single_plant/widgets/plant_detail_tile.dart';
 import 'package:first_class/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../widgets/loading_view.dart';
 
@@ -14,6 +16,7 @@ class SinglePlantTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SinglePlantController());
     var _width = MediaQuery.of(context).size.width;
     var _height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -43,14 +46,18 @@ class SinglePlantTile extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                            padding: const EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).scaffoldBackgroundColor,
-                              borderRadius: BorderRadius.circular(60),
-                            ),
-                            child: const Icon(Icons.chevron_left,
-                                color: primaryColor, size: 20)),
+                        InkWell(
+                          onTap: Get.back,
+                          child: Container(
+                              padding: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                color:
+                                    Theme.of(context).scaffoldBackgroundColor,
+                                borderRadius: BorderRadius.circular(60),
+                              ),
+                              child: const Icon(Icons.chevron_left,
+                                  color: primaryColor, size: 20)),
+                        ),
                         Container(
                             padding: const EdgeInsets.all(5),
                             decoration: BoxDecoration(
@@ -108,26 +115,35 @@ class SinglePlantTile extends StatelessWidget {
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
-                                  children: const [
-                                    Icon(
-                                      Icons.remove,
-                                      color: Colors.white,
-                                      size: 14,
+                                  children: [
+                                    InkWell(
+                                      onTap: controller.decrement,
+                                      child: const Icon(
+                                        Icons.remove,
+                                        color: Colors.white,
+                                        // size: 14,
+                                      ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 10,
                                     ),
-                                    Text(
-                                      "3",
-                                      style: TextStyle(color: Colors.white),
+                                    Obx(
+                                      () => Text(
+                                        "${controller.count.value}",
+                                        style: const TextStyle(
+                                            color: Colors.white),
+                                      ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 10,
                                     ),
-                                    Icon(
-                                      Icons.add,
-                                      color: Colors.white,
-                                      size: 14,
+                                    InkWell(
+                                      onTap: controller.increment,
+                                      child: const Icon(
+                                        Icons.add,
+                                        color: Colors.white,
+                                        // size: 14,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -192,7 +208,9 @@ class SinglePlantTile extends StatelessWidget {
                               ),
                               CustomButton(
                                 label: "BUY NOW",
-                                onPress: () {},
+                                onPress: () {
+                                  controller.addToCart(plant.plantId);
+                                },
                                 textColor: Colors.white,
                                 buttonColor: primaryColor,
                                 borderColor: primaryColor,

@@ -38,7 +38,7 @@ class PlantTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text("Indoor",
+                Text(plant.categoryName,
                     style: TextStyle(
                       color: primaryColor, fontSize: 12, //font size decreased
                     )),

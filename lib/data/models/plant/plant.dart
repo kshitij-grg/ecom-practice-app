@@ -33,6 +33,7 @@ class Plants {
   late String thickness;
   late String image;
   late int categoryId;
+  late String categoryName;
 
   Plants(
       {required this.plantId,
@@ -43,7 +44,8 @@ class Plants {
       required this.humidity,
       required this.thickness,
       required this.image,
-      required this.categoryId});
+      required this.categoryId,
+      required this.categoryName});
 
   Plants.fromJson(Map<String, dynamic> json) {
     plantId = json["plant_id"];
@@ -55,6 +57,7 @@ class Plants {
     thickness = json["thickness"];
     image = json["image"];
     categoryId = json["category_id"];
+    categoryName = json["category_name"];
   }
 
   Map<String, dynamic> toJson() {
@@ -68,6 +71,7 @@ class Plants {
     _data["thickness"] = thickness;
     _data["image"] = image;
     _data["category_id"] = categoryId;
+    _data["category_name"] = categoryName;
     return _data;
   }
 }

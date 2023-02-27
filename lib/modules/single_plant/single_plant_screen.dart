@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:first_class/constants.dart';
-import 'package:first_class/data/models/plant/plant.dart';
+import 'package:first_class/data/models/plant/plant_response.dart';
 import 'package:first_class/modules/single_plant/single_plant_controller.dart';
 import 'package:first_class/modules/single_plant/widgets/plant_detail_tile.dart';
 import 'package:first_class/widgets/custom_button.dart';

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:first_class/constants.dart';
-import 'package:first_class/data/models/plant/plant.dart';
+import 'package:first_class/data/models/plant/plant_response.dart';
 import 'package:http/http.dart' as http;
 
 class PlantApi {

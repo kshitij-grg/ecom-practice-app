@@ -8,7 +8,7 @@ class RegisterController extends GetxController {
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
 
-//regex expression for email and password
+  //regex expression for email and password
   RegExp regex = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
   RegExp emailRegex = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
@@ -19,7 +19,7 @@ class RegisterController extends GetxController {
     String password = passwordController.text.trim();
     String confirmPassword = passwordController.text.trim();
 
-// validation part
+    // validation part
     if (email.isEmpty || password.isEmpty) {
       Get.rawSnackbar(message: 'All Fields are required');
       return;

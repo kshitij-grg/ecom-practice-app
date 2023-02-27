@@ -19,13 +19,13 @@ class InputTextField extends StatelessWidget {
       decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: Colors.white, width: 1),
+            borderSide: const BorderSide(color: Colors.white, width: 1),
           ),
-          focusedBorder:
-              OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+          focusedBorder: const OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.white)),
           label: Text(
             label,
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
           )),
       textInputAction: textInputAction,
       keyboardType: textInputType,

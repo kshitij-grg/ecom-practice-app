@@ -1,11 +1,13 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:first_class/constants.dart';
+import 'package:first_class/modules/cart/cart_controller.dart';
 import 'package:first_class/modules/cart/cart_screen.dart';
 import 'package:first_class/modules/explore/explore_screen.dart';
 import 'package:first_class/modules/history/history_screen.dart';
 import 'package:first_class/modules/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -26,6 +28,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(CartController());
+
     return Scaffold(
       body: IndexedStack(
         index: _selectedIndex,

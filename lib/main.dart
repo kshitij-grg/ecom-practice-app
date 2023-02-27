@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:first_class/app_controller.dart';
-import 'package:first_class/modules/cart/cart_controller.dart';
 import 'package:first_class/modules/home_screen.dart';
 import 'package:first_class/modules/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +26,6 @@ class MyApp extends StatelessWidget {
       initialBinding: BindingsBuilder(
         () {
           Get.put(AppController(sharedPreferences), permanent: true);
-          Get.put(CartController(), permanent: true);
         },
       ),
       home: GetX<AppController>(

@@ -1,11 +1,9 @@
 import 'dart:convert';
-
 import 'package:first_class/constants.dart';
 import 'package:first_class/data/models/auth/login_response.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
-
 import '../../app_controller.dart';
+import 'package:http/http.dart' as http;
 
 class AuthApi {
   static Future<LoginResponse> register(

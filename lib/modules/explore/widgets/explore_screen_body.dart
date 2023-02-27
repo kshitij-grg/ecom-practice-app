@@ -1,5 +1,5 @@
 import 'package:first_class/data/models/category/category_reponse.dart';
-import 'package:first_class/data/models/plant/plant.dart';
+import 'package:first_class/data/models/plant/plant_response.dart';
 import 'package:first_class/modules/explore/widgets/plant_tile.dart';
 import 'package:flutter/material.dart';
 

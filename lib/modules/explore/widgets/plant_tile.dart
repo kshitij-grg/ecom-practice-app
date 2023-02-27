@@ -2,7 +2,7 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:first_class/constants.dart';
-import 'package:first_class/data/models/plant/plant.dart';
+import 'package:first_class/data/models/plant/plant_response.dart';
 import 'package:first_class/modules/single_plant/single_plant_screen.dart';
 import 'package:first_class/widgets/loading_view.dart';
 import 'package:flutter/material.dart';

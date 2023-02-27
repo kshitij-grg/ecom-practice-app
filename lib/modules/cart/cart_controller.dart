@@ -1,13 +1,41 @@
 import 'package:first_class/app_controller.dart';
 import 'package:first_class/constants.dart';
 import 'package:first_class/data/api/cart_api.dart';
-import 'package:first_class/data/models/plant/plant.dart';
+import 'package:first_class/data/models/cart/cart_response.dart';
 import 'package:get/get.dart';
 
 class CartController extends GetxController {
   String apiKey = Get.find<AppController>().getToken();
   List<Plants> plantsCart = [];
   final isLoading = false.obs;
+  final total = 0.0.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    getCartFood();
+  }
+
+  Future<void> getCartFood() async {
+    List<Plants> tempCart = await CartApi.get(apiKey);
+    plantsCart.addAll(tempCart);
+    calculateTotalCost();
+    update();
+  }
+
+  void calculateTotalCost() {
+    double newTotal = 0;
+    for (var cartItem in plantsCart) {
+      newTotal +=
+          (double.parse(cartItem.cartQuantity) * cartItem.price.toDouble());
+    }
+    total(newTotal);
+  }
+
+  Future<void> updatePlantCart() async {
+    plantsCart = await CartApi.get(apiKey);
+    calculateTotalCost();
+  }
 
   Future<void> addToCart(int plantId, String quantity) async {
     isLoading(true);
@@ -41,5 +69,8 @@ class CartController extends GetxController {
       }
       Get.rawSnackbar(message: errorMessage);
     }
+    calculateTotalCost();
+    updatePlantCart();
+    update();
   }
 }

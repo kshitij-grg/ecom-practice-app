@@ -1,12 +1,12 @@
-class PlantResponse {
+class CartResponse {
   late List<Plants> plants;
   late bool error;
   late String message;
 
-  PlantResponse(
+  CartResponse(
       {required this.plants, required this.error, required this.message});
 
-  PlantResponse.fromJson(Map<String, dynamic> json) {
+  CartResponse.fromJson(Map<String, dynamic> json) {
     plants = (json["plants"] == null
         ? null
         : (json["plants"] as List).map((e) => Plants.fromJson(e)).toList())!;
@@ -33,7 +33,8 @@ class Plants {
   late String thickness;
   late String image;
   late int categoryId;
-  late String categoryName;
+  late String cartQuantity;
+  late int cartId;
 
   Plants(
       {required this.plantId,
@@ -45,7 +46,8 @@ class Plants {
       required this.thickness,
       required this.image,
       required this.categoryId,
-      required this.categoryName});
+      required this.cartQuantity,
+      required this.cartId});
 
   Plants.fromJson(Map<String, dynamic> json) {
     plantId = json["plant_id"];
@@ -57,7 +59,8 @@ class Plants {
     thickness = json["thickness"];
     image = json["image"];
     categoryId = json["category_id"];
-    categoryName = json["category_name"];
+    cartQuantity = json["cart_quantity"];
+    cartId = json["cart_id"];
   }
 
   Map<String, dynamic> toJson() {
@@ -71,7 +74,8 @@ class Plants {
     _data["thickness"] = thickness;
     _data["image"] = image;
     _data["category_id"] = categoryId;
-    _data["category_name"] = categoryName;
+    _data["cart_quantity"] = cartQuantity;
+    _data["cart_id"] = cartId;
     return _data;
   }
 }

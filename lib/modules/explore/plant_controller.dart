@@ -1,5 +1,5 @@
 import 'package:first_class/data/api/plant_api.dart';
-import 'package:first_class/data/models/plant/plant.dart';
+import 'package:first_class/data/models/plant/plant_response.dart';
 import 'package:get/get.dart';
 
 class PlantController extends GetxController {
